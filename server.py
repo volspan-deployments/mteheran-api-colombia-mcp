@@ -29,6 +29,7 @@ CATEGORY_MAP = {
 @mcp.tool()
 async def get_country_info() -> dict:
     """Retrieve general information about Colombia as a country, including capital, population, area, currency, language, and other national facts."""
+    _track("get_country_info")
     async with httpx.AsyncClient(timeout=30) as client:
         response = await client.get(f"{BASE_URL}/Country/Colombia")
         response.raise_for_status()
@@ -37,6 +38,7 @@ async def get_country_info() -> dict:
 
 @mcp.tool()
 async def get_departments(
+    _track("get_departments")
     id: Optional[int] = None,
     name: Optional[str] = None
 ) -> dict:
@@ -58,6 +60,7 @@ async def get_departments(
 
 @mcp.tool()
 async def get_cities(
+    _track("get_cities")
     id: Optional[int] = None,
     name: Optional[str] = None,
     department_id: Optional[int] = None
@@ -84,6 +87,7 @@ async def get_cities(
 
 @mcp.tool()
 async def get_presidents(
+    _track("get_presidents")
     id: Optional[int] = None,
     name: Optional[str] = None
 ) -> dict:
@@ -105,6 +109,7 @@ async def get_presidents(
 
 @mcp.tool()
 async def get_tourist_attractions(
+    _track("get_tourist_attractions")
     id: Optional[int] = None,
     city_id: Optional[int] = None,
     name: Optional[str] = None
@@ -131,6 +136,7 @@ async def get_tourist_attractions(
 
 @mcp.tool()
 async def get_holidays(
+    _track("get_holidays")
     year: Optional[int] = None
 ) -> dict:
     """Retrieve Colombian public holidays, optionally filtered by year."""
@@ -147,6 +153,7 @@ async def get_holidays(
 
 @mcp.tool()
 async def get_airports(
+    _track("get_airports")
     id: Optional[int] = None,
     name: Optional[str] = None,
     city_id: Optional[int] = None
@@ -173,6 +180,7 @@ async def get_airports(
 
 @mcp.tool()
 async def get_cultural_info(
+    _track("get_cultural_info")
     category: str,
     id: Optional[int] = None,
     name: Optional[str] = None
